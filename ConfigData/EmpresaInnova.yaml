@@ -1,0 +1,18 @@
+server:
+  port: 8090
+spring:
+  datasource:
+    driver-class-name: org.postgresql.driver
+    url: jdbc:postgresql://localhost:5032/EmpresaInnova
+    username: root
+    password: root1234
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+eureka:
+  instance:
+    host: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7861/eureka/

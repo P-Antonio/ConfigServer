@@ -1,6 +1,6 @@
 server:
   port: 8888
-  
+
 spring:
   application:
     name: Config-server
@@ -8,4 +8,5 @@ spring:
     config:
       server:
         git:
-          uri:
+          uri: https://github.com/P-Antonio/ConfigServer
+        search-paths: ConfigData
