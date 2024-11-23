@@ -8,5 +8,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/P-Antonio/ConfigServer
-        search-paths: ConfigData
+          default-label: config-server
+          uri: https://github.com/P-Antonio/ConfigServer/tree/config_server
+          search-paths: ConfigData
