@@ -9,5 +9,6 @@ spring:
       server:
         git:
           default-label: config_server
-          uri: https://github.com/P-Antonio/ConfigServer/tree/config_server
+          uri: https://github.com/P-Antonio/ConfigServer
           search-paths: ConfigData
+          clone-on-start: true
