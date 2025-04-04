@@ -31,3 +31,9 @@ resilience4j.circuitbreaker:
       waitDurationInOpenState: 50s
       failureRateThreshold: 50
       eventConsumerBufferSize: 10
+
+springdoc:
+  webmvc:
+    enable: true
+  webflux:
+    enable: false

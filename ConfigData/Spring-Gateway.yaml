@@ -22,7 +22,32 @@ spring:
           uri: lb://EmpresaInnova
           predicates:
             - Path=/empresa/**
+          filters:
+            - tokenRelay =
         - id: MyGranProyecto
           uri: lb://MyGranProyecto
           predicates:
             - Path=/producto/**
+          filters:
+            - tokenRelay =
+
+
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id:
+            client-secret: J7dDeQlfxoRMdg5aDKZWJIZ8Tk1EuPkA
+            provider: keycloak
+            authorization-grant-type: authorization-code
+            redirect-uri:
+            scope: openid, profile, email
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:9090/realms/Keycloak-realm-dev
+    resourceserver:
+      jwt:
+        issuer-uri: http://localhost:9090/realms/Keycloak-realm-dev
+
+
