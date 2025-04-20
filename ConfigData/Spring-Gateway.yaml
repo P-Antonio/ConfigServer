@@ -14,44 +14,47 @@ eureka:
 spring:
   cloud:
     gateway:
+      default-filters:
+        - TokenRelay
       discovery:
         locator:
           enabled: true
       routes:
+        - id: Oauth2
+          uri: lb://Oauth2
+          predicates:
+            - Path=/auth/**
         - id: EmpresaInnova
           uri: lb://EmpresaInnova
           predicates:
             - Path=/empresa/**
           filters:
-            - tokenRelay =
+            - RemoveRequestHeader=Cookie
         - id: MyGranProyecto
           uri: lb://MyGranProyecto
           predicates:
             - Path=/producto/**
           filters:
-            - tokenRelay =
+            - RemoveRequestHeader=Cookie
 
 
   security:
     oauth2:
       client:
-        registration:
-          keycloak:
-            client-id: spring-client
-            client-secret: J7dDeQlfxoRMdg5aDKZWJIZ8Tk1EuPkA
-            provider: keycloak
-            authorization-grant-type: authorization-code
-            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
-            scope:
-              - openid
-              - profile
-              - email
         provider:
           keycloak:
+            authorization-uri: http://localhost:9090/realms/Keycloak-realm-dev/protocol/openid-connect/auth
+            userinfo-uri: http://localhost:9090/realms/Keycloak-realm-dev/protocol/openid-connect/userinfo
+            user-name-attribute: preferred_username
             token-uri: http://localhost:9090/realms/Keycloak-realm-dev/protocol/openid-connect/token
-            user-info-uri: http://localhost:9090/realms/Keycloak-realm-dev/protocol/openid-connect/userinfo
-            jwk-set-uri: http://localhost:9090/realms/Keycloak-realm-dev/protocol/openid-connect/certs
-            issuer-uri: http://localhost:9090/realms/Keycloak-realm-dev
+        registration:
+          spring-client:
+            provider: Keycloak
+            client-id: spring-client
+            client-secret: J7dDeQlfxoRMdg5aDKZWJIZ8Tk1EuPkA
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/*"
+
     resourceserver:
       jwt:
         issuer-uri: http://localhost:9090/realms/Keycloak-realm-dev
