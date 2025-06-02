@@ -49,7 +49,7 @@ spring:
             token-uri: http://localhost:9090/realms/Keycloak-realm-dev/protocol/openid-connect/token
         registration:
           spring-client:
-            provider: Keycloak
+            provider: keycloak
             client-id: spring-client
             client-secret: J7dDeQlfxoRMdg5aDKZWJIZ8Tk1EuPkA
             authorization-grant-type: authorization_code
