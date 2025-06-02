@@ -14,8 +14,9 @@ spring:
   security:
     oauth2:
       resourceserver:
-        jwt.issuer-uri: http://localhost:9090/realms/Keycloak-realm-dev
-        jwt.jwk-set-uri: http://localhost:9090/realms/Keycloak-realm-dev/protocol/openid-connect/certs
+        jwt:
+          issuer-uri: http://localhost:9090/realms/Keycloak-realm-dev
+          jwk-set-uri: http://localhost:9090/realms/Keycloak-realm-dev/protocol/openid-connect/certs
 
 jwt:
   oauth2:
