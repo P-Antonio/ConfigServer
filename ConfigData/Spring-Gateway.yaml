@@ -53,7 +53,7 @@ spring:
             client-id: spring-client
             client-secret: J7dDeQlfxoRMdg5aDKZWJIZ8Tk1EuPkA
             authorization-grant-type: authorization_code
-            redirect-uri: "{baseUrl}//login/oauth2/code/{registrationId}"
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
 
     resourceserver:
       jwt:
